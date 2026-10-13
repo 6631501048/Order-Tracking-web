@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens — ค่าชุดเดียวกับ Figma (Variables: Color/*)
+   สีสถานะผ่าน contrast ข้อความ >= 4.5:1 และมีไอคอน+ข้อความกำกับเสมอ
+   ------------------------------------------------------------------ */
+@theme inline {
+  --font-sans: var(--font-latin), var(--font-thai), ui-sans-serif, system-ui,
+    sans-serif;
+}
+
+@theme {
+  --color-canvas: #f5f6fa;
+  --color-surface: #ffffff;
+  --color-ink: #0f172a;
+  --color-ink-muted: #475569;
+  --color-line: #e2e8f0;
+  --color-line-strong: #cbd5e1;
+
+  --color-brand: #4338ca;
+  --color-brand-hover: #3730a3;
+  --color-brand-soft: #eef2ff;
+  /* brand เมื่อใช้เป็น "สีข้อความ/ลิงก์" (โหมดมืดใช้โทนอ่อนเพื่อให้ contrast พอ) */
+  --color-brand-fg: #4338ca;
+  --color-on-brand: #ffffff;
+  --color-placeholder: #94a3b8;
+  --color-disabled-bg: #cbd5e1;
+  --color-disabled-fg: #64748b;
+
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fef2f2;
+  --color-danger-line: #fecaca;
+
+  /* Status: อยู่ในคิว */
+  --color-status-queued-bg: #f1f5f9;
+  --color-status-queued-fg: #334155;
+  --color-status-queued-line: #cbd5e1;
+  /* Status: กำลังดำเนินการ */
+  --color-status-progress-bg: #dbeafe;
+  --color-status-progress-fg: #1e3a8a;
+  --color-status-progress-line: #93c5fd;
+  /* Status: เสร็จสิ้น */
+  --color-status-done-bg: #dcfce7;
+  --color-status-done-fg: #14532d;
+  --color-status-done-line: #86efac;
+  /* Status: รอชำระเงิน */
+  --color-status-pay-bg: #fef3c7;
+  --color-status-pay-fg: #78350f;
+  --color-status-pay-line: #fcd34d;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
+}
+
+html {
+  color-scheme: light;
+}
+
+/* Dark mode: ตามค่าระบบอัตโนมัติ และผู้ใช้สลับเองได้ (data-theme บน <html>) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  --color-canvas: #0b1020;
+  --color-surface: #131a2e;
+  --color-ink: #e8ecf8;
+  --color-ink-muted: #a6b0c6;
+  --color-line: #263049;
+  --color-line-strong: #3b4767;
+  --color-brand: #4f46e5;
+  --color-brand-hover: #4338ca;
+  --color-brand-soft: #1b2050;
+  --color-brand-fg: #a5b4fc;
+  --color-placeholder: #7b87a3;
+  --color-disabled-bg: #2a3350;
+  --color-disabled-fg: #8591ad;
+  --color-danger: #f87171;
+  --color-danger-soft: #3a1418;
+  --color-danger-line: #7f1d1d;
+  --color-status-queued-bg: #1e293b;
+  --color-status-queued-fg: #cbd5e1;
+  --color-status-queued-line: #475569;
+  --color-status-progress-bg: #172554;
+  --color-status-progress-fg: #bfdbfe;
+  --color-status-progress-line: #1d4ed8;
+  --color-status-done-bg: #052e16;
+  --color-status-done-fg: #bbf7d0;
+  --color-status-done-line: #15803d;
+  --color-status-pay-bg: #422006;
+  --color-status-pay-fg: #fde68a;
+  --color-status-pay-line: #a16207;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
+  color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --color-canvas: #0b1020;
+  --color-surface: #131a2e;
+  --color-ink: #e8ecf8;
+  --color-ink-muted: #a6b0c6;
+  --color-line: #263049;
+  --color-line-strong: #3b4767;
+  --color-brand: #4f46e5;
+  --color-brand-hover: #4338ca;
+  --color-brand-soft: #1b2050;
+  --color-brand-fg: #a5b4fc;
+  --color-placeholder: #7b87a3;
+  --color-disabled-bg: #2a3350;
+  --color-disabled-fg: #8591ad;
+  --color-danger: #f87171;
+  --color-danger-soft: #3a1418;
+  --color-danger-line: #7f1d1d;
+  --color-status-queued-bg: #1e293b;
+  --color-status-queued-fg: #cbd5e1;
+  --color-status-queued-line: #475569;
+  --color-status-progress-bg: #172554;
+  --color-status-progress-fg: #bfdbfe;
+  --color-status-progress-line: #1d4ed8;
+  --color-status-done-bg: #052e16;
+  --color-status-done-fg: #bbf7d0;
+  --color-status-done-line: #15803d;
+  --color-status-pay-bg: #422006;
+  --color-status-pay-fg: #fde68a;
+  --color-status-pay-line: #a16207;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-fg);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
