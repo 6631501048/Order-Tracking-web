@@ -10,8 +10,8 @@
 
 ## ลิงก์ส่งงาน
 
-- Figma (View access): [ใส่ลิงก์ Figma]
-- Live demo: [ใส่ลิงก์ Vercel]
+- Figma (View access): https://www.figma.com/design/S1kmoTP1HNBZrAKMmx64gy/Order-Tracking?node-id=0-1&t=0o7TNJQvPaK3NV2Y-1
+- Live demo: https://order-tracking-web-pearl.vercel.app/
 - Source code: repo นี้
 
 ## วิธีรันโปรเจกต์
